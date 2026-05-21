@@ -29,6 +29,7 @@ function App() {
     catch { return []; }
   });
   const [myPageActiveTab, setMyPageActiveTab] = useState('received');
+  const [footerDark, setFooterDark] = useState(false);
 
   // Sync to localStorage whenever state changes
   useEffect(() => {
@@ -173,7 +174,7 @@ function App() {
           <Quality />
           <UseCase />
           <EditorialGrid />
-          <FinalCTA onNavigate={handleNavigate} />
+          <FinalCTA onNavigate={handleNavigate} onDarkChange={setFooterDark} />
         </>
       )}
 
@@ -210,7 +211,7 @@ function App() {
         />
       )}
       
-      <Footer onNavigate={handleNavigate} />
+      <Footer onNavigate={handleNavigate} isDark={view === 'home' && footerDark} />
     </div>
   );
 }

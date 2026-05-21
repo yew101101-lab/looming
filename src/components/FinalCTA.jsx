@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './FinalCTA.css';
 
-const FinalCTA = ({ onNavigate }) => {
+const FinalCTA = ({ onNavigate, onDarkChange }) => {
   const sectionRef = useRef(null);
   const [isDarkened, setIsDarkened] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setIsDarkened(true);
-        } else {
-          setIsDarkened(false);
+        const dark = entry.isIntersecting;
+        setIsDarkened(dark);
+        if (onDarkChange) {
+          onDarkChange(dark);
         }
       });
     }, { threshold: 0.5 });
@@ -21,7 +21,7 @@ const FinalCTA = ({ onNavigate }) => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [onDarkChange]);
 
   return (
     <section className={`cta-section ${isDarkened ? 'dark-mode' : ''}`} ref={sectionRef}>

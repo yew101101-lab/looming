@@ -6,6 +6,9 @@
   font-family: var(--font-body);
   position: relative;
   z-index: 10;
+  transition: background-color 1.5s cubic-bezier(0.25, 1, 0.5, 1), 
+              color 1.5s ease, 
+              border-color 1.5s ease;
 }
 
 .footer-container {
@@ -215,4 +218,43 @@
   .footer-sns-links {
     margin-top: 0.5rem;
   }
+}
+
+/* Dark Mode Styles for Footer when aligned with darkened FinalCTA */
+.site-footer.dark-mode {
+  background-color: #161210;
+  color: #F9F7F3;
+  border-top: 1px solid rgba(249, 247, 243, 0.08);
+}
+
+.site-footer.dark-mode .footer-logo,
+.site-footer.dark-mode .footer-link,
+.site-footer.dark-mode .footer-sns-link {
+  color: #F9F7F3;
+}
+
+.site-footer.dark-mode .footer-slogan,
+.site-footer.dark-mode .footer-info-text,
+.site-footer.dark-mode .company-info-text {
+  color: #F9F7F3;
+  opacity: 0.8;
+}
+
+.site-footer.dark-mode .footer-group-title {
+  color: #F9F7F3;
+  opacity: 0.5;
+}
+
+.site-footer.dark-mode .footer-copyright {
+  color: #F9F7F3;
+  opacity: 0.4;
+}
+
+.site-footer.dark-mode .footer-divider {
+  background-color: rgba(249, 247, 243, 0.08);
+}
+
+.site-footer.dark-mode .footer-link:hover,
+.site-footer.dark-mode .footer-sns-link:hover {
+  color: var(--color-accent);
 }

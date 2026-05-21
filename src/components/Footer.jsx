@@ -1,14 +1,14 @@
 import React from 'react';
 import './Footer.css';
 
-const Footer = ({ onNavigate }) => {
+const Footer = ({ onNavigate, isDark }) => {
   const handleLinkClick = (e, targetView) => {
     e.preventDefault();
     onNavigate(targetView);
   };
 
   return (
-    <footer className="site-footer">
+    <footer className={`site-footer ${isDark ? 'dark-mode' : ''}`}>
       <div className="footer-container">
         
         {/* Top Section: Brand slogan & Quick Links */}
