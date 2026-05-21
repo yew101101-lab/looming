@@ -9,6 +9,7 @@ import Quality from './components/Quality';
 import UseCase from './components/UseCase';
 import EditorialGrid from './components/EditorialGrid';
 import FinalCTA from './components/FinalCTA';
+import Footer from './components/Footer';
 
 // Import newly created pages
 import Shop from './pages/Shop';
@@ -208,6 +209,8 @@ function App() {
           onCheckoutSuccess={handleCheckoutSuccess}
         />
       )}
+      
+      <Footer onNavigate={handleNavigate} />
     </div>
   );
 }
