@@ -221,13 +221,12 @@
 
 .editorial-label {
   font-family: var(--font-main);
-  font-size: 1.3rem;
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: var(--color-text);
-  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: rgba(59, 51, 44, 0.5);
   display: block;
   margin-bottom: 1.25rem;
+  font-weight: bold;
 }
 
 .scent-desc-main {
@@ -310,8 +309,7 @@
   .scent-header {
     margin-bottom: 2.5rem;
   }
-  .scent-subtitle,
-  .editorial-label {
+  .scent-subtitle {
     font-size: 1.0rem;
     letter-spacing: 1px;
   }
