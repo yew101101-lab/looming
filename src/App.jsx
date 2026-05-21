@@ -3,7 +3,6 @@ import './App.css';
 import CustomCursor from './components/CustomCursor';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Empathy from './components/Empathy';
 import CoreFeature from './components/CoreFeature';
 import ScentNotes from './components/ScentNotes';
 import Quality from './components/Quality';
@@ -168,7 +167,6 @@ function App() {
       {view === 'home' && (
         <>
           <Hero onNavigate={handleNavigate} />
-          <Empathy />
           <CoreFeature />
           <ScentNotes />
           <Quality />

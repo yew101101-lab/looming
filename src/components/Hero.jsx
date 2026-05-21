@@ -281,6 +281,12 @@ const Hero = ({ onNavigate }) => {
         </h1>
       </div>
       
+      <div className={`hero-empathy-wrapper ${isLoaded ? 'loaded' : ''}`}>
+        <p className="hero-empathy-text">
+          뻔한 포장지 속,<br />다 전하지 못한 마음이 있지는 않나요?
+        </p>
+      </div>
+
       <div 
         ref={subRef}
         className={`hero-sub-wrapper ${isLoaded ? 'loaded' : ''}`}
