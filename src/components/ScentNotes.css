@@ -61,8 +61,8 @@
   background: none;
   border: none;
   font-family: var(--font-main);
-  color: rgba(30, 26, 22, 0.7);
-  font-size: 1.25rem;
+  color: rgba(30, 26, 22, 0.8);
+  font-size: 1.3rem;
   cursor: none; /* Custom cursor */
   display: flex;
   align-items: baseline;
@@ -79,15 +79,15 @@
 }
 
 .scent-tab-btn .tab-name {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .scent-tab-btn:hover {
-  color: var(--color-text);
+  color: #000;
 }
 
 .scent-tab-btn.active {
-  color: var(--color-text);
+  color: #000;
 }
 
 .scent-tab-btn::after {
@@ -279,9 +279,9 @@
 
 .pyramid-ing {
   font-family: var(--font-main);
-  font-size: 1.15rem;
-  font-weight: 400;
-  color: var(--color-text);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(59, 51, 44, 0.8);
   letter-spacing: 0.02em;
 }
 
