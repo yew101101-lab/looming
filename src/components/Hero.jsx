@@ -301,7 +301,6 @@ const Hero = ({ onNavigate }) => {
 
       {/* Down Scroll Indicator */}
       <div className={`hero-scroll-indicator ${isLoaded ? 'loaded' : ''}`}>
-        <span className="scroll-text">SCROLL DOWN</span>
         <div className="scroll-line-box">
           <div className="scroll-line-pin"></div>
         </div>
