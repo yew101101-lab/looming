@@ -8,7 +8,7 @@ const PRODUCTS = [
     category: 'floral',
     price: 39000,
     desc: '이슬 머금은 묵직한 생장미와 블랙커런트의 상큼함이 자아내는 고혹적인 정원의 기억',
-    img: '/candle_1.png',
+    img: 'candle_1.png',
     notes: 'Top: Cassis, Green Leaf | Middle: Rose, Geranium | Base: Musk, Amber'
   },
   {
@@ -17,7 +17,7 @@ const PRODUCTS = [
     category: 'woody',
     price: 42000,
     desc: '안개 낀 새벽 숲의 푸릇한 소나무 잎새와 깊고 아스라한 샌달우드가 남기는 은은한 흙내음',
-    img: '/candle_2.png',
+    img: 'candle_2.png',
     notes: 'Top: Pine Needle, Eucalyptus | Middle: Cypress, Cedarwood | Base: Sandalwood, Patchouli'
   },
   {
@@ -26,7 +26,7 @@ const PRODUCTS = [
     category: 'fresh',
     price: 39000,
     desc: '바람 부는 바다 절벽 끝자락의 싱그러운 세이지와 차분한 바다 머스크 향의 고귀한 조화',
-    img: '/candle_3.png',
+    img: 'candle_3.png',
     notes: 'Top: Sea Salt, Sage | Middle: Ambrette, Seaweed | Base: Musk, Cedarwood'
   }
 ];
@@ -62,7 +62,7 @@ const Shop = ({ onAddToCart }) => {
         {filteredProducts.map(product => (
           <div key={product.id} className="product-card">
             <div className="product-image-wrapper">
-              <img src={product.img} alt={product.name} className="product-image" />
+              <img src={`${import.meta.env.BASE_URL}${product.img}`} alt={product.name} className="product-image" />
               <div className="product-overlay">
                 <div className="product-notes">
                   {product.notes.split(' | ').map((note, i) => {

@@ -24,7 +24,7 @@ const OurStory = () => {
         <section className="story-section concept-section">
           <div className="concept-grid">
             <div className="concept-image-wrap">
-              <img src="/mood_gifting.png" alt="Gifting mood" className="concept-img" />
+              <img src={`${import.meta.env.BASE_URL}mood_gifting.png`} alt="Gifting mood" className="concept-img" />
             </div>
             <div className="concept-text-wrap">
               <h2 className="concept-title">THE REVEALING LETTER</h2>
@@ -56,7 +56,7 @@ const OurStory = () => {
               </p>
             </div>
             <div className="craft-image-wrap">
-              <img src="/quality_package.png" alt="Craft packaging" className="craft-img" />
+              <img src={`${import.meta.env.BASE_URL}quality_package.png`} alt="Craft packaging" className="craft-img" />
             </div>
           </div>
         </section>

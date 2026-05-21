@@ -4,7 +4,7 @@ import './EditorialGrid.css';
 const GRID_ITEMS = [
   {
     id: 1,
-    image: '/mood_bedroom.png',
+    image: 'mood_bedroom.png',
     title: '고요의 시간',
     desc: '하루의 끝자락, 침실을 감싸 안는 아늑함.',
     sizeClass: 'grid-large',
@@ -12,7 +12,7 @@ const GRID_ITEMS = [
   },
   {
     id: 2,
-    image: '/mood_bathroom.png',
+    image: 'mood_bathroom.png',
     title: '새로운 아침',
     desc: '유칼립투스 잎사귀와 청량한 해풍의 무드.',
     sizeClass: 'grid-medium-tall',
@@ -20,7 +20,7 @@ const GRID_ITEMS = [
   },
   {
     id: 3,
-    image: '/mood_desk.png',
+    image: 'mood_desk.png',
     title: '생각의 심연',
     desc: '고요한 서재에서 비로소 피어나는 영감.',
     sizeClass: 'grid-medium',
@@ -28,7 +28,7 @@ const GRID_ITEMS = [
   },
   {
     id: 4,
-    image: '/mood_gifting.png',
+    image: 'mood_gifting.png',
     title: '정성스런 마음',
     desc: '다 말하지 않아도 스며드는 은은한 진심.',
     sizeClass: 'grid-wide',
@@ -97,7 +97,7 @@ const EditorialGrid = () => {
             >
               <div className="editorial-img-wrapper">
                 <img 
-                  src={item.image} 
+                  src={`${import.meta.env.BASE_URL}${item.image}`} 
                   alt={item.title} 
                   className="editorial-img"
                 />

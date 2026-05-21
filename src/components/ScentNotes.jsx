@@ -7,27 +7,27 @@ const SCENT_DATA = [
     title: '이슬 맺힌 장미 정원',
     englishTitle: 'Dewy Rose & Cassis',
     tagline: '안개 낀 아침, 이슬을 머금은 싱그러운 생장미의 향',
-    description: '물기를 머금은 블랙커런트 잎의 파릇함과 화사한 로즈 어코드의 조화가 마치 비밀스러운 정원을 산책하는 듯한 감각을 선물합니다.',
-    image: '/scent_rose.png',
+    description: '물기를 머금은 블랙커런트 잎의 파릇함 and 화사한 로즈 어코드의 조화가 마치 비밀스러운 정원을 산책하는 듯한 감각을 선물합니다.',
+    image: 'scent_rose.png',
     bgColor: '#FDF6F5',
     notes: [
       {
         level: 'TOP NOTE',
         ingredients: '블랙커런트 잎, 그린 리프, 베르가못',
         desc: '코끝을 스치는 쌉싸름하고 싱그러운 첫인상',
-        noteImage: '/quality_scent.png'
+        noteImage: 'quality_scent.png'
       },
       {
         level: 'MIDDLE NOTE',
         ingredients: '불가리안 로즈, 제라늄',
         desc: '풍성하게 피어나는 관능적이고 우아한 생장미의 향조',
-        noteImage: '/scent_rose.png'
+        noteImage: 'scent_rose.png'
       },
       {
         level: 'BASE NOTE',
         ingredients: '머스크, 앰버, 시더우드',
         desc: '체온과 어우러져 깊고 포근하게 스며드는 여운',
-        noteImage: '/mood_desk.png'
+        noteImage: 'mood_desk.png'
       }
     ]
   },
@@ -37,26 +37,26 @@ const SCENT_DATA = [
     englishTitle: 'Dawn Pine & Sandalwood',
     tagline: '차갑게 내려앉은 새벽 공기와 묵직한 침엽수의 만남',
     description: '주니퍼 베리의 청량한 첫 노트를 지나, 깊은 숲속 가문비나무와 스모키한 인센스의 차분함이 마음의 평온을 선사합니다.',
-    image: '/scent_pine.png',
+    image: 'scent_pine.png',
     bgColor: '#F3F6F4',
     notes: [
       {
         level: 'TOP NOTE',
         ingredients: '주니퍼 베리, 레몬, 베르가못',
         desc: '새벽 안개를 뚫고 들어오는 차갑고 맑은 청량감',
-        noteImage: '/quality_scent.png'
+        noteImage: 'quality_scent.png'
       },
       {
         level: 'MIDDLE NOTE',
         ingredients: '솔잎, 인센스, 오리스',
         desc: '고요한 숲 한가운데 서 있는 듯한 스모키 우디 향조',
-        noteImage: '/scent_pine.png'
+        noteImage: 'scent_pine.png'
       },
       {
         level: 'BASE NOTE',
         ingredients: '샌달우드, 바닐라, 앰버',
         desc: '부드럽고 달콤하면서도 무게감 있게 중심을 잡아주는 잔향',
-        noteImage: '/mood_bedroom.png'
+        noteImage: 'mood_bedroom.png'
       }
     ]
   },
@@ -66,26 +66,26 @@ const SCENT_DATA = [
     englishTitle: 'Windy Cliff & Sage',
     tagline: '깎아지른 절벽 위 세이지 향과 짭조름한 바닷바람',
     description: '소금기를 가득 머금은 활기찬 해풍과 대지의 야생 세이지가 어우러져, 자연 그대로의 생명력과 자유로움을 채워냅니다.',
-    image: '/scent_sage.png',
+    image: 'scent_sage.png',
     bgColor: '#F1F4F7',
     notes: [
       {
         level: 'TOP NOTE',
         ingredients: '암브레트 씨드, 그레이프프루트',
         desc: '태양 빛을 받아 투명하게 빛나는 시트러스의 터치',
-        noteImage: '/quality_scent.png'
+        noteImage: 'quality_scent.png'
       },
       {
         level: 'MIDDLE NOTE',
         ingredients: '씨 솔트, 세이지',
         desc: '파도가 부서지며 뿜어내는 짭조름함과 야생 허브의 이국적 어우러짐',
-        noteImage: '/scent_sage.png'
+        noteImage: 'scent_sage.png'
       },
       {
         level: 'BASE NOTE',
         ingredients: '레드 알게, 과약우드',
         desc: '대지의 따스함과 미네랄의 깊이를 남기는 나무의 잔향',
-        noteImage: '/mood_bathroom.png'
+        noteImage: 'mood_bathroom.png'
       }
     ]
   }
@@ -208,7 +208,7 @@ const ScentNotes = () => {
             <div className="scent-image-frame">
               {/* Base Scent Image */}
               <img 
-                src={currentScent.image} 
+                src={`${import.meta.env.BASE_URL}${currentScent.image}`} 
                 alt={currentScent.title} 
                 className="scent-image base-image"
               />
@@ -216,7 +216,7 @@ const ScentNotes = () => {
               {currentScent.notes.map((note, idx) => (
                 <img 
                   key={idx}
-                  src={note.noteImage} 
+                  src={`${import.meta.env.BASE_URL}${note.noteImage}`} 
                   alt={`${note.level} concept`} 
                   className={`scent-image overlay-image ${hoveredNoteIndex === idx ? 'active' : ''}`}
                 />

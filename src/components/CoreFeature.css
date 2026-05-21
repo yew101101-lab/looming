@@ -90,9 +90,9 @@
   opacity: 1; /* Active state is visible */
 }
 
-.img-1 { background-image: url('/candle_reveal_1.png?v=3'); }
-.img-2 { background-image: url('/candle_reveal_2.png?v=3'); }
-.img-3 { background-image: url('/candle_reveal_3.png?v=3'); }
+.img-1 { }
+.img-2 { }
+.img-3 { }
 
 /* ─── 모바일 ─── */
 @media (max-width: 768px) {

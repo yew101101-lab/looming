@@ -260,7 +260,7 @@ const Hero = ({ onNavigate }) => {
       >
         <video 
           className="hero-video"
-          src="/video.mp4" 
+          src={`${import.meta.env.BASE_URL}video.mp4`}
           autoPlay 
           muted 
           loop 

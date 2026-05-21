@@ -38,7 +38,10 @@ const UseCase = () => {
           className="usecase-image animate-on-scroll" 
           style={{ transform: `translateY(${-offset}px)` }}
         >
-          <div className="usecase-img-inner">
+          <div 
+            className="usecase-img-inner"
+            style={{ backgroundImage: `url(${import.meta.env.BASE_URL}usecase_surprise_new.png)` }}
+          >
             <span className="usecase-img-caption">SCENARIO CONCEPT N°04</span>
           </div>
         </div>

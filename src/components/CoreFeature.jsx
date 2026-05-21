@@ -63,9 +63,18 @@ const CoreFeature = () => {
           <p>시간이 지나 왁스가 녹으면, 숨겨두었던 메시지가 천천히 모습을 드러냅니다.</p>
         </div>
         <div className="core-images">
-          <div className={`candle-img img-1 ${activeImg === 1 ? 'active' : ''}`}></div>
-          <div className={`candle-img img-2 ${activeImg === 2 ? 'active' : ''}`}></div>
-          <div className={`candle-img img-3 ${activeImg === 3 ? 'active' : ''}`}></div>
+          <div
+            className={`candle-img img-1 ${activeImg === 1 ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${import.meta.env.BASE_URL}candle_reveal_1.png?v=3)` }}
+          />
+          <div
+            className={`candle-img img-2 ${activeImg === 2 ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${import.meta.env.BASE_URL}candle_reveal_2.png?v=3)` }}
+          />
+          <div
+            className={`candle-img img-3 ${activeImg === 3 ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${import.meta.env.BASE_URL}candle_reveal_3.png?v=3)` }}
+          />
         </div>
       </div>
     </section>

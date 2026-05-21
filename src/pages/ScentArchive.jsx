@@ -13,7 +13,7 @@ const SCENTS = [
       middle: ['Bulgarian Rose (생장미)', 'Geranium (제라늄)'],
       base: ['White Musk (머스크)', 'Warm Amber (호박향)']
     },
-    img: '/scent_rose.png'
+    img: 'scent_rose.png'
   },
   {
     id: 's2',
@@ -26,7 +26,7 @@ const SCENTS = [
       middle: ['Cypress (편백나무)', 'Atlas Cedarwood (삼나무)'],
       base: ['East Indian Sandalwood (백단향)', 'Patchouli (흙풀향)']
     },
-    img: '/scent_pine.png'
+    img: 'scent_pine.png'
   },
   {
     id: 's3',
@@ -39,7 +39,7 @@ const SCENTS = [
       middle: ['Ambrette Seed (사치씨드)', 'Marine Seaweed (해초)'],
       base: ['Mineral Musk (바다 머스크)', 'Red Cedarwood (적삼나무)']
     },
-    img: '/scent_sage.png'
+    img: 'scent_sage.png'
   }
 ];
 
@@ -71,7 +71,7 @@ const ScentArchive = () => {
         {/* Right: Detail Content */}
         <div className="scent-detail-display">
           <div className="scent-detail-visual">
-            <img src={selectedScent.img} alt={selectedScent.name} className="scent-detail-img" />
+            <img src={`${import.meta.env.BASE_URL}${selectedScent.img}`} alt={selectedScent.name} className="scent-detail-img" />
           </div>
           
           <div className="scent-detail-info">
