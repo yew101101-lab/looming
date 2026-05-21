@@ -157,7 +157,7 @@
 .nav-link {
   font-family: var(--font-main);
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 2px;
   text-decoration: none;
   color: #F9F7F3;
@@ -172,7 +172,7 @@
 .nav-link.active {
   opacity: 1;
   letter-spacing: 3px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .nav-link:hover {
@@ -299,7 +299,7 @@
 .mobile-nav-link {
   font-family: var(--font-main);
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 300;
   letter-spacing: 2.5px;
   text-decoration: none;
   color: #1d1a16;
@@ -309,7 +309,7 @@
 }
 
 .mobile-nav-link.active {
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 6px;
 }
