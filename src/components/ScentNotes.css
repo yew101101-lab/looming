@@ -90,6 +90,10 @@
   color: #000;
 }
 
+.scent-tab-btn.active .tab-name {
+  font-weight: 700;
+}
+
 .scent-tab-btn::after {
   content: '';
   position: absolute;
