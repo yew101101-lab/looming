@@ -83,11 +83,11 @@
 }
 
 .scent-tab-btn:hover {
-  color: #000;
+  color: var(--color-text);
 }
 
 .scent-tab-btn.active {
-  color: #000;
+  color: var(--color-text);
 }
 
 .scent-tab-btn::after {
