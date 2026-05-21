@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --color-bg: #F9F7F3;
+  --color-text: #3B332C;
+  --color-accent: #E88C7D;
+  
+  /* Font */
+  --font-main: 'Cormorant Garamond', 'Noto Serif KR', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-weight: 300;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  cursor: none; /* For custom cursor */
+}
+
+/* Custom Cursor (Candlelight Glow Aura) */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-text);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0) translate(-50%, -50%);
+  z-index: 9999;
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
+}
+
+/* Warm candlelight aura following the cursor */
+.custom-cursor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130px;
+  height: 130px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(238, 125, 90, 0.13) 0%, rgba(238, 125, 90, 0.03) 50%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: width 0.3s, height 0.3s, background 0.3s;
+}
+
+.custom-cursor.hover {
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-accent);
+}
+
+.custom-cursor.hover::after {
+  width: 190px;
+  height: 190px;
+  background: radial-gradient(circle, rgba(238, 125, 90, 0.22) 0%, rgba(238, 125, 90, 0.05) 50%, transparent 100%);
+}
+
+/* Common Typography */
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--font-main);
+  font-weight: 300;
+  letter-spacing: 2.5px;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+}
+
+/* Utility classes */
+.section {
+  position: relative;
+  width: 100%;
+}
+
+.btn-cta {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-family: var(--font-main);
+  cursor: none;
+  transition: filter 0.3s, letter-spacing 0.3s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-cta:hover {
+  filter: brightness(1.1);
+  letter-spacing: 1px;
+}
+
+.btn-cta:active {
+  transform: scale(0.98);
+}
+
+.btn-cta::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg);
+}
+
+.btn-cta:hover::after {
+  animation: shimmer 1s ease infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    left: 150%;
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    cursor: auto;
+    overflow-x: hidden;
+    width: 100%;
+  }
+  .custom-cursor {
+    display: none;
+  }
+  .btn-cta {
+    cursor: pointer;
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* 제목 자간 모바일 최적화 - 넓은 자간이 소형 화면에서 줄바꿈 유발 */
+  h1, h2, h3 {
+    letter-spacing: 1px;
+    word-break: keep-all;
+  }
+
+  /* 배경 글로우 오브 모바일 축소 */
+  .orb-1, .orb-2, .orb-3 {
+    width: 80vw;
+    height: 80vw;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2, h3 {
+    letter-spacing: 0.5px;
+    word-break: keep-all;
+  }
+  .btn-cta {
+    width: 100%;
+    text-align: center;
+    padding: 0.9rem 1.2rem;
+  }
+}
+
+
+/* Global Tactile Paper Noise Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9998;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  
+  /* GPU 하드웨어 가속 활성화로 리페인트 병목 해결 */
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Background Ambient Blurry Glow Orbs */
+.ambient-glow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.6;
+  
+  /* GPU 하드웨어 가속 활성화 */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: 0.2;
+  mix-blend-mode: multiply;
+  animation: orbFloat 35s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+  width: 50vw;
+  height: 50vw;
+  background-color: #FDF1ED; /* Soft amber/peach */
+  top: -10%;
+  left: -10%;
+  animation-duration: 38s;
+}
+
+.orb-2 {
+  width: 55vw;
+  height: 55vw;
+  background-color: #EBF1EE; /* Soft forest/sage */
+  bottom: -15%;
+  right: -5%;
+  animation-duration: 48s;
+  animation-delay: -8s;
+}
+
+.orb-3 {
+  width: 42vw;
+  height: 42vw;
+  background-color: #F3EDF6; /* Soft lavender/iris */
+  top: 40%;
+  left: 25%;
+  animation-duration: 32s;
+  animation-delay: -4s;
+}
+
+@keyframes orbFloat {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(6%, 8%) scale(1.12) rotate(180deg);
+  }
+  100% {
+    transform: translate(-4%, -6%) scale(0.92) rotate(360deg);
+  }
+}

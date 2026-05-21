@@ -1,0 +1,180 @@
+.core-feature-section {
+  position: relative;
+  width: 100%;
+  min-height: 95vh;
+  background-color: var(--color-bg);
+  padding: 5rem 5% 2rem 5%;
+}
+
+/* Hero 에서 흘러내리는 캘들 글로우 연결 오뺄레이 */
+.core-feature-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 22vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(238, 110, 70, 0.05) 0%,
+    rgba(249, 247, 243, 0.5) 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.core-content-wrapper {
+  position: sticky;
+  top: 25vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Initial state for scroll reveal */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.core-content-wrapper.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.core-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.core-text h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+}
+
+.core-text p {
+  font-size: 1.2rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.core-images {
+  flex: 1;
+  position: relative;
+  height: 60vh;
+  max-width: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #eee;
+}
+
+.candle-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0; /* Base state is hidden */
+  transition: opacity 0.8s ease-in-out; /* Smooth transition */
+}
+
+.candle-img.active {
+  opacity: 1; /* Active state is visible */
+}
+
+.img-1 { background-image: url('/candle_reveal_1.png?v=3'); }
+.img-2 { background-image: url('/candle_reveal_2.png?v=3'); }
+.img-3 { background-image: url('/candle_reveal_3.png?v=3'); }
+
+/* ─── 모바일 ─── */
+@media (max-width: 768px) {
+  .core-feature-section {
+    min-height: auto;
+    padding: 3rem 5% 2rem;
+    overflow: hidden;          /* sticky 잔여 효과로 인한 오버플로우 차단 */
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .core-content-wrapper {
+    /* sticky 완전 해제 */
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+
+    /* 레이아웃 초기화 */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 2rem !important;
+
+    /* 너비 확실히 잡기 */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;          /* 0 auto 대신 0으로 완전 초기화 */
+    box-sizing: border-box !important;
+
+    /* 애니메이션 즉시 해제 */
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+
+  .core-text {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    flex: none;
+  }
+  .core-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    word-break: keep-all;
+    line-height: 1.5;
+  }
+  .core-text p {
+    font-size: 0.9rem;
+  }
+
+  .core-images {
+    width: 100%;
+    max-width: 100%;
+    height: 260px;
+    flex: none;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .candle-img.img-1,
+  .candle-img.img-2 {
+    opacity: 0 !important;
+    transition: none !important;
+  }
+  .candle-img.img-3 {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .core-text h2 {
+    font-size: 1.3rem;
+  }
+  .core-images {
+    height: 220px;
+  }
+}
+

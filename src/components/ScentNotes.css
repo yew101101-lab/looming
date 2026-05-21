@@ -1,0 +1,415 @@
+.scent-notes-section {
+  padding: 2rem 2rem 3.5rem 2rem;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.scent-notes-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.scent-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.scent-subtitle {
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  color: rgba(59, 51, 44, 0.6);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.scent-title {
+  font-family: var(--font-main);
+  font-size: 2.75rem;
+  font-weight: 300;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.scent-header-desc {
+  font-size: 1.05rem;
+  color: rgba(59, 51, 44, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Tabs styling */
+.scent-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(59, 51, 44, 0.1);
+  padding-bottom: 1.5rem;
+}
+
+.scent-tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-main);
+  color: rgba(59, 51, 44, 0.4);
+  font-size: 1.1rem;
+  cursor: none; /* Custom cursor */
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: color 0.4s ease, transform 0.3s ease;
+}
+
+.scent-tab-btn .tab-num {
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.scent-tab-btn .tab-name {
+  font-weight: 400;
+}
+
+.scent-tab-btn:hover {
+  color: var(--color-text);
+}
+
+.scent-tab-btn.active {
+  color: var(--color-text);
+}
+
+.scent-tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.scent-tab-btn.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Content Grid */
+.scent-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: flex-start;
+  /* 슬라이드 전환 트랜지션 */
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.26s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scent-content-grid.scent-sliding {
+  opacity: 0;
+  transform: translateX(-18px);
+}
+
+/* Column 1: Image Wrapper */
+.scent-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+/* Gaussian Amber Mist Glow Backdrop */
+.scent-image-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(238, 125, 90, 0.16) 0%, rgba(238, 125, 90, 0) 70%);
+  filter: blur(45px);
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  transform: scale(0.92);
+}
+
+.scent-image-wrapper:hover::before {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.scent-image-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  background-color: #f1ede6;
+  position: relative; /* Contain absolute image children */
+  z-index: 1; /* Elevate image above background glow */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scent-image-wrapper:hover .scent-image-frame {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(59, 51, 44, 0.08);
+}
+
+.scent-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.scent-image.base-image {
+  opacity: 1;
+  z-index: 1;
+}
+
+.scent-image.overlay-image {
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.scent-image.overlay-image.active {
+  opacity: 1;
+}
+
+.scent-meta-text h3 {
+  font-family: var(--font-main);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.scent-meta-text p {
+  font-size: 0.95rem;
+  color: rgba(59, 51, 44, 0.7);
+  line-height: 1.6;
+}
+
+/* Column 2: Info Wrapper */
+.scent-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.editorial-label {
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: rgba(59, 51, 44, 0.5);
+  display: block;
+  margin-bottom: 1.25rem;
+  font-weight: bold;
+}
+
+.scent-desc-main {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--color-text);
+  font-weight: 300;
+}
+
+/* Scent Pyramid */
+.pyramid-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pyramid-item {
+  border-bottom: 1px solid rgba(59, 51, 44, 0.1);
+  padding: 1.2rem 1.4rem 1.6rem 1.4rem; /* 가시적인 호버 광채 영역 패딩 */
+  margin: 0 -1.4rem; /* 가로 마진 보완으로 레이아웃 흐트러짐 억제 */
+  border-radius: 6px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              border-color 0.4s ease, 
+              background-color 0.5s ease,
+              box-shadow 0.5s ease;
+}
+
+.pyramid-item:hover {
+  transform: translateX(12px);
+  border-bottom-color: rgba(232, 140, 125, 0.35); /* 액센트 칼라로 부드럽게 강조 */
+  background-color: rgba(255, 255, 255, 0.45); /* 맑은 스포트라이트 대비 */
+  box-shadow: 0 12px 35px rgba(232, 140, 125, 0.06); /* 가우시안 아우라 광채 효과 */
+}
+
+.pyramid-label-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pyramid-level {
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.pyramid-ing {
+  font-family: var(--font-main);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+.pyramid-desc {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(59, 51, 44, 0.65);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive Grid */
+@media (max-width: 992px) {
+  .scent-content-grid {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .scent-notes-section {
+    padding: 2rem 5% 3rem;
+  }
+  .scent-header {
+    margin-bottom: 2.5rem;
+  }
+  .scent-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+  .scent-title {
+    font-size: 1.5rem;
+    word-break: keep-all;
+  }
+  .scent-header-desc {
+    font-size: 0.88rem;
+  }
+  .scent-tabs {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .scent-tab-btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+  }
+  .scent-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .scent-image-frame {
+    aspect-ratio: 4 / 3;
+  }
+  .scent-meta-text h3 {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  .scent-meta-text p {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  .scent-info-wrapper {
+    gap: 2rem;
+  }
+  .scent-desc-main {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .pyramid-ing {
+    font-size: 1rem;
+  }
+  .pyramid-desc {
+    font-size: 0.82rem;
+  }
+  .pyramid-item:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .scent-title {
+    font-size: 1.3rem;
+  }
+  .scent-image-frame {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/* ─── Mobile Dot Indicator ─── */
+.scent-mobile-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.scent-active-label {
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  color: var(--color-text);
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.scent-dots {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.scent-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(59, 51, 44, 0.3);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.scent-dot.active {
+  background: var(--color-text);
+  border-color: var(--color-text);
+  transform: scale(1.5);
+}
+

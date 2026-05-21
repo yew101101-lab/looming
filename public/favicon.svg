@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Background circle: warm dark bg -->
+  <rect width="32" height="32" rx="8" fill="#1E1A16"/>
+
+  <!-- Flame outer glow -->
+  <ellipse cx="16" cy="8" rx="4.5" ry="6" fill="#EE7D5A" opacity="0.3"/>
+
+  <!-- Flame body -->
+  <path d="M16 3 C14.5 5.5 12.5 7 12.5 9.5 C12.5 11.8 14 13 16 13 C18 13 19.5 11.8 19.5 9.5 C19.5 7 17.5 5.5 16 3Z" fill="#F7C59F"/>
+
+  <!-- Flame core -->
+  <path d="M16 6 C15.2 7.5 14.2 8.5 14.2 10 C14.2 11.4 15 12 16 12 C17 12 17.8 11.4 17.8 10 C17.8 8.5 16.8 7.5 16 6Z" fill="#FFEDD5"/>
+
+  <!-- Wick -->
+  <line x1="16" y1="13" x2="16" y2="16" stroke="#8B7355" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Candle body -->
+  <rect x="11" y="16" width="10" height="13" rx="1.5" fill="#F2EDE6"/>
+  <!-- Candle body subtle shade -->
+  <rect x="11" y="16" width="10" height="13" rx="1.5" fill="url(#candleGrad)"/>
+
+  <!-- Wax surface top highlight -->
+  <ellipse cx="16" cy="16" rx="5" ry="1.2" fill="#FAF6F0"/>
+
+  <!-- Side reflection line -->
+  <line x1="13" y1="19" x2="13" y2="27" stroke="rgba(255,255,255,0.4)" stroke-width="0.8" stroke-linecap="round"/>
+
+  <!-- Gradient definition for candle body depth -->
+  <defs>
+    <linearGradient id="candleGrad" x1="11" y1="16" x2="21" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B332C" stop-opacity="0.08"/>
+      <stop offset="40%" stop-color="#3B332C" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#3B332C" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+</svg>

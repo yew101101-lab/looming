@@ -1,0 +1,458 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 주변부 비네팅 — 시선을 중앙으로 집중 */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 75% at 50% 50%,
+    transparent 40%,
+    rgba(8, 6, 4, 0.55) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Cinematic Candle Flame Glow Border (Vertical Swaying Glows) */
+.hero-candle-blend {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 24vh;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.blend-base {
+  position: absolute;
+  bottom: -30px;
+  left: -5%;
+  width: 110%;
+  height: 120%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(249, 247, 243, 0.03) 25%, rgba(249, 247, 243, 0.2) 55%, rgba(249, 247, 243, 0.7) 85%, var(--color-bg) 100%);
+  filter: blur(28px);
+}
+
+/* Center candle flame glow zone - aligns with the vertical aesthetic */
+.candle-flames-container {
+  position: absolute;
+  bottom: -25px; /* 초강력 블러 수치 보정 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.flame-glow {
+  position: absolute;
+  border-radius: 50% 50% 45% 45% / 70% 70% 30% 30%; /* 기하적 느낌을 줄인 완만한 곡률 */
+  transform-origin: bottom center;
+}
+
+/* 1. Back Glow (Soft Ivory Haze - Ultra Blur) */
+.flame-back {
+  width: 380px;
+  height: 180px;
+  background: radial-gradient(ellipse at 50% 100%, rgba(249, 247, 243, 0.65) 0%, rgba(249, 247, 243, 0.15) 50%, transparent 100%);
+  filter: blur(85px); /* 극단적으로 뭉개뜨려 경계 실종 */
+  animation: flameSwayBack 8s ease-in-out infinite alternate;
+}
+
+/* 2. Middle Flame (Dreamy Soft White Glow - High Blur) */
+.flame-mid {
+  width: 260px;
+  height: 140px;
+  background: radial-gradient(ellipse at 50% 100%, rgba(249, 247, 243, 0.8) 0%, rgba(249, 247, 243, 0.2) 50%, transparent 100%);
+  filter: blur(55px); /* 대폭 확장하여 곡률 라인 해체 */
+  animation: flameSwayMid 5.5s ease-in-out infinite alternate;
+}
+
+/* 3. Core Flame (Pure White Highlight Aura - Medium Blur) */
+.flame-front {
+  width: 140px;
+  height: 105px;
+  background: radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+  filter: blur(30px); /* 대폭 확장 */
+  animation: flameSwayFront 4.2s ease-in-out infinite alternate;
+}
+
+@keyframes flameSwayBack {
+  0% { 
+    transform: translateY(5px) scaleX(0.9) scaleY(0.85) rotate(-2deg) skewX(-1.5deg); 
+    opacity: 0.75; 
+  }
+  50% { 
+    transform: translateY(-8px) scaleX(1.1) scaleY(1.1) rotate(2deg) skewX(2deg); 
+    opacity: 0.95; 
+  }
+  100% { 
+    transform: translateY(2px) scaleX(0.95) scaleY(0.95) rotate(-1deg) skewX(-0.8deg); 
+    opacity: 0.85; 
+  }
+}
+
+@keyframes flameSwayMid {
+  0% { 
+    transform: translateY(3px) scaleX(0.85) scaleY(1.1) rotate(2.5deg) skewX(2deg); 
+    opacity: 0.8; 
+  }
+  50% { 
+    transform: translateY(-12px) scaleX(1.08) scaleY(0.85) rotate(-2.5deg) skewX(-2.5deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: translateY(0) scaleX(0.92) scaleY(1.05) rotate(1deg) skewX(0.8deg); 
+    opacity: 0.85; 
+  }
+}
+
+@keyframes flameSwayFront {
+  0% { 
+    transform: scaleX(0.9) scaleY(0.95) rotate(-1.5deg); 
+    opacity: 0.85; 
+  }
+  50% { 
+    transform: scaleX(1.15) scaleY(1.12) rotate(1.8deg); 
+    opacity: 1; 
+  }
+  100% { 
+    transform: scaleX(0.95) scaleY(0.9) rotate(-0.8deg); 
+    opacity: 0.9; 
+  }
+}
+
+.hero-bg-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: videoBreathing 24s ease-in-out infinite alternate;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: background 0.12s cubic-bezier(0.1, 0.8, 0.25, 1);
+}
+
+.hero-particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1.5;
+  pointer-events: none;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-end; 
+  justify-content: center;
+  writing-mode: horizontal-tb;
+  text-align: right; 
+  gap: 1.8rem; 
+  height: auto;
+  color: var(--color-bg); 
+  z-index: 2; 
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-title {
+  font-family: var(--font-main);
+  font-size: 5.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+
+  background: linear-gradient(
+    140deg,
+    #FFF8EE 0%,
+    #FFD08A 30%,
+    #F0925A 58%,
+    #C05E30 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+
+  /* 역광 반령: 콌제 글로우와 같은 색에 항상 대비되는 진한 검은 헤일로 */
+  filter:
+    drop-shadow(var(--backlight-shadow, 0px 8px 28px rgba(4, 2, 1, 0.88)))
+    drop-shadow(0 0 20px rgba(4, 2, 1, 0.75))
+    drop-shadow(0 0 6px rgba(4, 2, 1, 0.90))
+    blur(12px);
+
+  opacity: 0;
+  letter-spacing: -0.08em;
+  transform: translateY(40px);
+  transition: opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 2.2s cubic-bezier(0.16, 1, 0.3, 1),
+              letter-spacing 3s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-title.loaded {
+  opacity: 1;
+  letter-spacing: 0.06em;
+  transform: translateY(0);
+  filter:
+    drop-shadow(var(--backlight-shadow, 0px 8px 28px rgba(4, 2, 1, 0.88)))
+    drop-shadow(0 0 20px rgba(4, 2, 1, 0.75))
+    drop-shadow(0 0 6px rgba(4, 2, 1, 0.90));
+}
+
+.hero-sub-wrapper {
+  position: absolute;
+  bottom: 4.5rem;
+  right: 5vw;
+  z-index: 3;
+
+  opacity: 0;
+  letter-spacing: -0.03em;
+  transform: translateY(20px);
+  /* 역광 반령: 서브타이틀도 상시 담크 헤일로로 보호 */
+  filter:
+    drop-shadow(var(--backlight-shadow, 0px 3px 18px rgba(4, 2, 1, 0.80)))
+    drop-shadow(0 0 10px rgba(4, 2, 1, 0.70))
+    blur(8px);
+  transition: opacity 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s,
+              transform 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s,
+              letter-spacing 3.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s,
+              filter 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-sub-wrapper.loaded {
+  opacity: 0.95;
+  letter-spacing: 0.1em;
+  transform: translateY(0);
+  filter:
+    drop-shadow(var(--backlight-shadow, 0px 3px 18px rgba(4, 2, 1, 0.80)))
+    drop-shadow(0 0 10px rgba(4, 2, 1, 0.70));
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: #ede7de;           /* 더 밝게 — 더 잘 보이게 */
+  line-height: 1.6;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 서브타이틀 앞 장식 라인 */
+.hero-sub::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(232, 140, 125, 0.9));
+  flex-shrink: 0;
+}
+
+/* Elegant CTA Wrapper & Button */
+.hero-cta-wrap {
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 2s cubic-bezier(0.25, 1, 0.5, 1) 1.2s, transform 2s cubic-bezier(0.25, 1, 0.5, 1) 1.2s;
+}
+
+.hero-cta-wrap.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-cta-btn {
+  background: rgba(232, 140, 125, 0.08);  /* 액센트 틴트 */
+  border: 1px solid rgba(232, 140, 125, 0.55);  /* 액센트 컬러 테두리 */
+  color: var(--color-bg);
+  padding: 1.1rem 3rem;
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  letter-spacing: 4px;
+  cursor: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 18px rgba(232, 140, 125, 0.12), inset 0 0 12px rgba(232, 140, 125, 0.04);
+}
+
+.hero-cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transition: all 0.6s ease;
+}
+
+.hero-cta-btn:hover::before {
+  left: 100%;
+}
+
+.hero-cta-btn:hover {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-color: var(--color-bg);
+  box-shadow: 0 0 25px rgba(249, 247, 243, 0.35);
+  transform: scale(1.03);
+}
+
+/* Down Scroll Indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 3.2rem; /* 촛불 서광 띠의 시작점보다 위로 들어올려 가시성 확보 */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 3; /* 촛불 레이어들보다 상단에 앉힘 */
+  opacity: 0;
+  transition: opacity 2s ease-out 1.8s;
+}
+
+.hero-scroll-indicator.loaded {
+  opacity: 0.6;
+}
+
+.scroll-text {
+  font-family: var(--font-main);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: rgba(249, 247, 243, 0.55);
+}
+
+.scroll-line-box {
+  width: 1px;
+  height: 40px;
+  background-color: rgba(249, 247, 243, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line-pin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background-color: rgba(249, 247, 243, 0.7);
+  animation: scrollPin 2.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+@keyframes scrollPin {
+  0% { top: -15px; }
+  50% { top: 15px; opacity: 1; }
+  100% { top: 40px; opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    writing-mode: horizontal-tb;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-height: none;
+    gap: 1.2rem;
+    padding: 0 1.5rem;
+    width: 100%;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    word-break: keep-all;
+    text-align: center;
+  }
+  
+  .hero-sub-wrapper {
+    position: absolute;
+    bottom: 2.2rem;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) !important;
+    max-width: calc(100vw - 3rem);
+    width: max-content;
+  }
+  
+  .hero-sub {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+    white-space: normal;
+    word-break: keep-all;
+    text-align: center;
+  }
+
+  .hero-cta-btn {
+    padding: 0.8rem 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-scroll-indicator {
+    bottom: 1.5rem;
+  }
+
+  .scroll-line-box {
+    height: 30px;
+  }
+
+  .candle-flames-container {
+    width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-sub {
+    font-size: 0.78rem;
+  }
+}
+
+@keyframes videoBreathing {
+  0% { transform: scale(1.02); }
+  100% { transform: scale(1.09); }
+}
+

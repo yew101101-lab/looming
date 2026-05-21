@@ -1,0 +1,61 @@
+.app-container {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Premium Floating Toast Alert */
+.cart-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(59, 51, 44, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #F9F7F3;
+  padding: 1rem 2rem;
+  border-radius: 40px;
+  font-family: var(--font-main);
+  font-size: 0.88rem;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(249, 247, 243, 0.1);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.animate-toast {
+  animation: slideUpFade 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}
+
+
+@media (max-width: 480px) {
+  .cart-toast {
+    max-width: 90vw;
+    font-size: 0.78rem;
+    padding: 0.8rem 1.2rem;
+    text-align: center;
+    white-space: normal;
+    word-break: keep-all;
+  }
+}

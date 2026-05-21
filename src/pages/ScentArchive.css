@@ -1,0 +1,272 @@
+.scent-archive-page {
+  padding: 8rem 8% 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 80vh;
+}
+
+.archive-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.archive-title {
+  font-family: var(--font-main);
+  font-size: 2.8rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: var(--color-text);
+  margin-bottom: 0.8rem;
+}
+
+.archive-subtitle {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: #8c8378;
+  letter-spacing: 1px;
+}
+
+/* Main Layout Grid */
+.archive-main {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .archive-main {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .scent-selector {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+  .scent-select-card {
+    min-width: 250px;
+  }
+}
+
+.scent-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.scent-select-card {
+  background: rgba(249, 247, 243, 0.4);
+  border: 1px solid rgba(59, 51, 44, 0.05);
+  padding: 1.5rem;
+  border-radius: 4px;
+  text-align: left;
+  cursor: none;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.scent-select-card:hover {
+  background: rgba(249, 247, 243, 0.8);
+  border-color: rgba(59, 51, 44, 0.15);
+  transform: translateX(4px);
+}
+
+@media (max-width: 992px) {
+  .scent-select-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.scent-select-card.active {
+  background: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.scent-select-title {
+  font-family: var(--font-main);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--color-text);
+  letter-spacing: 0.5px;
+  transition: color 0.4s ease;
+}
+
+.scent-select-card.active .scent-select-title {
+  color: var(--color-bg);
+}
+
+.scent-select-tagline {
+  font-size: 0.8rem;
+  color: #8c8378;
+  line-height: 1.4;
+  transition: color 0.4s ease;
+}
+
+.scent-select-card.active .scent-select-tagline {
+  color: rgba(249, 247, 243, 0.7);
+}
+
+/* Detail Display */
+.scent-detail-display {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr;
+  gap: 3.5rem;
+  background-color: rgba(249, 247, 243, 0.45);
+  border: 1px solid rgba(59, 51, 44, 0.03);
+  padding: 3rem;
+  border-radius: 6px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .scent-detail-display {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 1.5rem;
+  }
+}
+
+.scent-detail-visual {
+  width: 100%;
+  aspect-ratio: 1/1.1;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #EFECE6;
+}
+
+.scent-detail-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.scent-detail-display:hover .scent-detail-img {
+  transform: scale(1.03);
+}
+
+.scent-detail-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.scent-detail-name {
+  font-family: var(--font-main);
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--color-text);
+  margin-bottom: 0.6rem;
+  letter-spacing: 1px;
+}
+
+.scent-detail-tagline {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #8c8378;
+  margin-bottom: 1.8rem;
+  font-weight: 300;
+}
+
+.scent-detail-desc {
+  font-size: 0.95rem;
+  color: #5c534a;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+/* Scent Pyramid */
+.scent-pyramid {
+  border-top: 1px solid rgba(59, 51, 44, 0.08);
+  padding-top: 1.8rem;
+  margin-bottom: 2.2rem;
+}
+
+.pyramid-title {
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--color-text);
+  margin-bottom: 1.2rem;
+}
+
+.pyramid-layer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 0;
+  border-bottom: 1px dashed rgba(59, 51, 44, 0.08);
+  font-size: 0.88rem;
+}
+
+.pyramid-layer:last-child {
+  border-bottom: none;
+}
+
+.layer-name {
+  font-family: var(--font-main);
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--color-text);
+}
+
+.layer-values {
+  color: #7c7368;
+  font-weight: 300;
+}
+
+/* Key Ingredients */
+.ingredients-box {
+  border-top: 1px solid rgba(59, 51, 44, 0.08);
+  padding-top: 1.8rem;
+}
+
+.ingredients-title {
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.ingredient-badge {
+  font-size: 0.8rem;
+  background-color: rgba(59, 51, 44, 0.05);
+  color: var(--color-text);
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-weight: 300;
+}
+
+/* ─── Mobile Responsive ─── */
+@media (max-width: 768px) {
+  .scent-archive-page {
+    padding: 6rem 5% 4rem;
+  }
+  .archive-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  .archive-subtitle {
+    font-size: 0.85rem;
+  }
+  .scent-detail-name {
+    font-size: 1.6rem;
+  }
+  .scent-select-card {
+    padding: 1.1rem;
+  }
+  .scent-detail-info {
+    padding: 0;
+  }
+}
